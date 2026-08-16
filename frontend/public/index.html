@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskFlow - Gestion de Projets</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            text-align: center;
+        }
+        .status {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>🚀 TaskFlow</h1>
+    <p>Application de gestion de projets collaboratifs</p>
+    <p class="status">✅ Frontend est en cours d'exécution !</p>
+    <p>Backend: <span id="backend-status">⏳ Vérification...</span></p>
+
+    <script>
+        fetch('http://localhost:5000/')
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById('backend-status').textContent = '✅ Connecté - ' + data.message;
+            })
+            .catch(err => {
+                document.getElementById('backend-status').textContent = '❌ Non connecté';
+                console.error(err);
+            });
+    </script>
+</body>
+</html>
