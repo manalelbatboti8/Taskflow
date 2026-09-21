@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TaskFlow — Gestion de projets collaboratifs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ======================= AUTH SCREEN ======================= -->
+<div id="auth-screen">
+  <div class="auth-card">
+    <span class="blueprint-mark tl"></span>
+    <span class="blueprint-mark br"></span>
+
+    <div class="auth-brand">
+      <div class="mark">TF</div>
+      <div class="name">Task<span>Flow</span></div>
+    </div>
+
+    <!-- Login form -->
+    <form id="login-form">
+      <h1>Se connecter</h1>
+      <p class="sub">Reprenez le fil de vos projets.</p>
+      <div id="login-error"></div>
+      <div class="field">
+        <label>Email</label>
+        <input type="email" id="login-email" required autocomplete="email">
+      </div>
+      <div class="field">
+        <label>Mot de passe</label>
+        <input type="password" id="login-password" required autocomplete="current-password">
+      </div>
+      <button type="submit" class="btn btn-primary">Se connecter</button>
+      <div class="auth-switch">
+        Pas encore de compte ? <button type="button" id="show-register">Créer un compte</button>
+      </div>
+    </form>
+
+    <!-- Register form -->
+    <form id="register-form" class="hidden">
+      <h1>Créer un compte</h1>
+      <p class="sub">Organisez vos projets d'équipe en quelques minutes.</p>
+      <div id="register-error"></div>
+      <div class="field">
+        <label>Nom complet</label>
+        <input type="text" id="register-fullname" required autocomplete="name">
+      </div>
+      <div class="field">
+        <label>Email</label>
+        <input type="email" id="register-email" required autocomplete="email">
+      </div>
+      <div class="field">
+        <label>Mot de passe</label>
+        <input type="password" id="register-password" required minlength="6" autocomplete="new-password">
+      </div>
+      <button type="submit" class="btn btn-primary">Créer mon compte</button>
+      <div class="auth-switch">
+        Déjà inscrit ? <button type="button" id="show-login">Se connecter</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ======================= APP SHELL ======================= -->
+<div id="app-shell" class="hidden">
+
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="mark">TF</div>
+      <div class="name">Task<span>Flow</span></div>
+    </div>
+
+    <nav>
+      <a href="#" class="nav-item" data-route="dashboard"><span class="dot"></span> Tableau de bord</a>
+      <a href="#" class="nav-item" data-route="projects"><span class="dot"></span> Tous les projets</a>
+    </nav>
+
+    <div class="nav-section-label">MES PROJETS</div>
+    <div class="sidebar-projects" id="sidebar-project-list"></div>
+
+    <div class="sidebar-footer">
+      <div class="avatar" id="sidebar-avatar">--</div>
+      <div class="who">
+        <div class="n" id="sidebar-name">—</div>
+        <div class="e" id="sidebar-email">—</div>
+      </div>
+      <button class="logout-btn" id="logout-btn" title="Se déconnecter">⏻</button>
+    </div>
+  </aside>
+
+  <div>
+    <header class="topbar">
+      <div>
+        <div class="crumb mono" id="topbar-crumb">TASKFLOW / DASHBOARD</div>
+        <h2 id="topbar-title">Tableau de bord</h2>
+      </div>
+      <div class="topbar-actions">
+        <button class="bell-btn" id="bell-btn">
+          🔔
+          <span class="bell-badge hidden" id="bell-badge">0</span>
+        </button>
+      </div>
+    </header>
+
+    <main class="content" id="main-content"></main>
+  </div>
+</div>
+
+<div id="notif-panel" class="notif-panel hidden"></div>
+<div id="modal-root"></div>
+<div class="toast-stack" id="toast-stack"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="api.js"></script>
+<script src="drafts.js"></script>
+<script src="auth.js"></script>
+<script src="notifications.js"></script>
+<script src="dashboard.js"></script>
+<script src="projects.js"></script>
+<script src="tasks.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

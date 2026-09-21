@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  # خدمة قاعدة البيانات - بدون توثيق
+  mongodb:
+    image: mongo:8.3
+    container_name: taskflow-mongodb
+    restart: always
+    ports:
+      - "27017:27017"
+    # ❌ أشيبي أو علّقي هاد الجزء كامل
+    # environment:
+    #   MONGO_INITDB_ROOT_USERNAME: admin
+    #   MONGO_INITDB_ROOT_PASSWORD: secret
+    #   MONGO_INITDB_DATABASE: taskflow
+    volumes:
+      - mongodb_data:/data/db
+
+  # Backend
+  backend:
+    build: ./backend
+    container_name: taskflow-backend
+    restart: always
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=development
+    env_file:
+      - ./backend/.env
+    depends_on:
+      - mongodb
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+
+  # Frontend
+  frontend:
+    build: ./frontend
+    container_name: taskflow-frontend
+    restart: always
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+
+volumes:
+  mongodb_data:
