@@ -7,12 +7,15 @@ const cors = require('cors');
 dotenv.config({ path: './.env' });
 
 const app = express();
-
+// --- zid f server.js, mora const app = express(); w 9bel app.use('/api/auth', ...) ---
+const applySecurity = require('./src/middleware/security');
+applySecurity(app);
 // Middleware
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
 // 📌 Routes
 const authRoutes = require('./src/routes/authRoutes');
 const projectRoutes = require('./src/routes/projectRoutes');
