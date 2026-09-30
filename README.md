@@ -12,18 +12,18 @@ Application web de gestion de projets collaboratifs — Module JavaScript · Exp
 
 ## Répartition des fonctionnalités (à compléter par l'équipe)
 
-| # | Fonctionnalité | Responsable |
-|---|-----------------|-------------|
-| 1 | Authentification (JWT, bcrypt) | |
-| 2 | Création et gestion des projets | |
-| 3 | Gestion des tâches | |
-| 4 | Assignation des tâches | |
-| 5 | Tableau de bord personnel | |
-| 6 | Filtrage, recherche, pagination | |
-| 7 | Sauvegarde automatique des brouillons | |
-| 8 | Gestion des membres d'un projet | |
-| 9 | Historique des activités | |
-| 10 | Notifications côté client | |
+| # | Fonctionnalité | 
+|---|-----------------|
+| 1 | Authentification (JWT, bcrypt) |
+| 2 | Création et gestion des projets |
+| 3 | Gestion des tâches |
+| 4 | Assignation des tâches |
+| 5 | Tableau de bord personnel |
+| 6 | Filtrage, recherche, pagination |
+| 7 | Sauvegarde automatique des brouillons |
+| 8 | Gestion des membres d'un projet |
+| 9 | Historique des activités |
+| 10 | Notifications côté client |
 
 ## Lancer le projet
 
